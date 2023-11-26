@@ -25,51 +25,38 @@ function App() {
     setDisplayValue("0");
   };
 
+  const buttons = [
+    { text: "1", onClick: handleNumberClick },
+    { text: "2", onClick: handleNumberClick },
+    { text: "3", onClick: handleNumberClick },
+    { text: "+", onClick: handleOperatorClick, className: styles.operator },
+    { text: "4", onClick: handleNumberClick },
+    { text: "5", onClick: handleNumberClick },
+    { text: "6", onClick: handleNumberClick },
+    { text: "-", onClick: handleOperatorClick, className: styles.operator },
+    { text: "7", onClick: handleNumberClick },
+    { text: "8", onClick: handleNumberClick },
+    { text: "9", onClick: handleNumberClick },
+    { text: "*", onClick: handleOperatorClick, className: styles.operator },
+    { text: "0", onClick: handleNumberClick },
+    { text: ".", onClick: handleNumberClick },
+    { text: "C", onClick: handleClearClick, className: styles.clearButton },
+    { text: "/", onClick: handleOperatorClick, className: styles.operator },
+    { text: "=", onClick: handleEqualClick, className: styles.lastButton },
+  ];
+
   return (
     <div className={styles.calculator}>
       <div className={styles.display}>{displayValue}</div>
       <div className={styles.buttons}>
-        <Button onClick={handleNumberClick} text="1" />
-        <Button onClick={handleNumberClick} text="2" />
-        <Button onClick={handleNumberClick} text="3" />
-        <Button
-          text="+"
-          className={styles.operator}
-          onClick={handleOperatorClick}
-        />
-        <Button onClick={handleNumberClick} text="4" />
-        <Button onClick={handleNumberClick} text="5" />
-        <Button onClick={handleNumberClick} text="6" />
-        <Button
-          text="-"
-          className={styles.operator}
-          onClick={handleOperatorClick}
-        />
-        <Button onClick={handleNumberClick} text="7" />
-        <Button onClick={handleNumberClick} text="8" />
-        <Button onClick={handleNumberClick} text="9" />
-        <Button
-          text="*"
-          className={styles.operator}
-          onClick={handleOperatorClick}
-        />
-        <Button onClick={handleNumberClick} text="0" />
-        <Button onClick={handleNumberClick} text="." />
-        <Button
-          text="C"
-          className={styles.clearButton}
-          onClick={handleClearClick}
-        />
-        <Button
-          text="/"
-          className={styles.operator}
-          onClick={handleOperatorClick}
-        />
-        <Button
-          text="="
-          onClick={handleEqualClick}
-          className={styles.lastButton}
-        />
+        {buttons.map(button => (
+          <Button
+            key={button.text}
+            text={button.text}
+            onClick={button.onClick}
+            className={button.className}
+          />
+        ))}
       </div>
     </div>
   );
