@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [displayValue, setDisplayValue] = useState("0");
+  const operators = ["+", "-", "*", "/"];
 
   const handleNumberClick = e => {
     setDisplayValue(prevDisplayValue =>
@@ -14,7 +15,10 @@ function App() {
   };
 
   const handleOperatorClick = e => {
-    setDisplayValue(prevDisplayValue => prevDisplayValue + e.target.value);
+    const lastChar = displayValue.slice(-1);
+    if (!operators.includes(lastChar)) {
+      setDisplayValue(prevDisplayValue => prevDisplayValue + e.target.value);
+    }
   };
 
   const handleEqualClick = () => {
