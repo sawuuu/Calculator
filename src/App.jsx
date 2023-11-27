@@ -18,7 +18,12 @@ function App() {
   };
 
   const handleEqualClick = () => {
-    setDisplayValue(eval(displayValue).toString());
+    if (displayValue.includes("/0")) {
+      setDisplayValue("ERR");
+      setTimeout(() => setDisplayValue("0"), 1500);
+    } else {
+      setDisplayValue(eval(displayValue).toString());
+    }
   };
 
   const handleClearClick = () => {
